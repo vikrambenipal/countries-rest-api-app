@@ -1,9 +1,10 @@
 import React from 'react'
 
-const CardPage = () => {
+const CardPage = (props, name, population) => {
+    console.log(props);
     return (
         <div>
-            <h1>wow</h1>
+            <h1>{props.location.state.population}</h1>
         </div>
     )
 }

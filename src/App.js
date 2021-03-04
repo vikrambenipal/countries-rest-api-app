@@ -5,7 +5,7 @@ import Search from './components/Search';
 import Card from './components/Card';
 import CardPage from './components/CardPage';
 import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
 
@@ -36,18 +36,16 @@ function App() {
             <Route exact path="/">
               <Search handleSearch={handleSearch}/>
               <Dropdown handleRegion={handleRegion}/>
-              {/* <Switch> */}
                 {countries.map((country, i) => {
-                  const name = country.name;
                   return ((region === "" || region === country.region) && country.name.includes(search)) 
                   && 
                     <Card key={i} name={country.name} population={country.population} region={country.region} capital={country.capital} 
                     nativeName={country.nativeName} subregion={country.subregion} languages={country.languages} currencies={country.currencies} 
                     topLevelDomain={country.topLevelDomain} borders={country.borders} flag={country.flag}/>
                 })}
-              {/* </Switch> */}
             </Route>
-            <Route exact path='/country/:name' component={CardPage} />
+            <Route exact path='/country/:name' 
+            render={(props) => <CardPage {...props}  />}/>
           </Switch>
         </div>
     </Router>
