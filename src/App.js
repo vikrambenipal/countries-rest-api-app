@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Nav from './components/Nav';
-import Card from './components/Card';
 import Dropdown from './components/Dropdown';
+import Search from './components/Search';
+import Card from './components/Card';
 import axios from 'axios';
 
 function App() {
 
   const [countries, setCountries] = useState([]);
   const [region, setRegion] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     axios.get("https://restcountries.eu/rest/v2/all").then(e => {
@@ -20,14 +22,17 @@ function App() {
     setRegion(newRegion);
   }
 
+  const handleSearch = (text) => {
+    setSearch(text);
+  }
+
   return (
     <div className="App">
-      {console.log(countries)}
       <Nav />
-      <input type="text" placeholder="Search for a country..."></input>
+      <Search handleSearch={handleSearch}/>
       <Dropdown handleRegion={handleRegion}/>
       {countries.map((country, i) => {
-        return (region == "" || region == country.region) && <Card key={i} name={country.name} />
+        return ((region == "" || region == country.region) && country.name.includes(search)) && <Card key={i} name={country.name} />
       })}
     </div>
   );
