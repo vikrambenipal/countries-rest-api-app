@@ -3,8 +3,9 @@ import Nav from './components/Nav';
 import Dropdown from './components/Dropdown';
 import Search from './components/Search';
 import Card from './components/Card';
+import CardPage from './components/CardPage';
 import axios from 'axios';
-import { convertTypeAcquisitionFromJson } from 'typescript';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
 
@@ -28,17 +29,29 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Nav />
-      <Search handleSearch={handleSearch}/>
-      <Dropdown handleRegion={handleRegion}/>
-      {countries.map((country, i) => {
-        return ((region == "" || region == country.region) && country.name.includes(search)) 
-        && <Card key={i} name={country.name} population={country.population} region={country.region} capital={country.capital} 
-        nativeName={country.nativeName} subregion={country.subregion} languages={country.languages} currencies={country.currencies} 
-        topLevelDomain={country.topLevelDomain} borders={country.borders} flag={country.flag}/>
-      })}
-    </div>
+    <Router>
+        <div className="App">
+          <Nav />
+          <Switch>
+            <Route exact path="/">
+              <Search handleSearch={handleSearch}/>
+              <Dropdown handleRegion={handleRegion}/>
+              {/* <Switch> */}
+                {countries.map((country, i) => {
+                  const name = country.name;
+                  return ((region === "" || region === country.region) && country.name.includes(search)) 
+                  && 
+                    <Card key={i} name={country.name} population={country.population} region={country.region} capital={country.capital} 
+                    nativeName={country.nativeName} subregion={country.subregion} languages={country.languages} currencies={country.currencies} 
+                    topLevelDomain={country.topLevelDomain} borders={country.borders} flag={country.flag}/>
+                })}
+              {/* </Switch> */}
+            </Route>
+            <Route exact path='/country/:name' component={CardPage} />
+          </Switch>
+        </div>
+    </Router>
+    
   );
 }
 

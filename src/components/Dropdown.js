@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const Dropdown = ({ handleRegion }) => {
     const handleSelect = (e) => {
-        if(e.target.value == "Filter by Region"){
+        if(e.target.value === "Filter by Region"){
             handleRegion("");
         }else{
             handleRegion(e.target.value);

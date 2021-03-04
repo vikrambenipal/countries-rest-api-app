@@ -8,7 +8,7 @@ const NavContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     h3 {
-        margin-left: 20px;
+        margin-left: 15px;
     }
     p {
         margin-right: 20px;
