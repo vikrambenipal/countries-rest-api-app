@@ -22,7 +22,16 @@ const Card = ({ name, population, region, capital, nativeName, subregion,
             pathname: `/country/${name}`,
             state: {
                 name: name,
-                population: population
+                population: population,
+                region: region,
+                capital: capital, 
+                nativeName, nativeName,
+                subregion: subregion,
+                languages: languages,
+                currencies: currencies,
+                topLevelDomain: topLevelDomain,
+                borders: borders,
+                flag: flag
             }
             }}>
             <img src={flag} alt=""></img>
