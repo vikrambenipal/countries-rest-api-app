@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Dropdown = ({ handleRegion }) => {
+const Dropdown = ({ handleRegion, value }) => {
     const handleSelect = (e) => {
         if(e.target.value === "Filter by Region"){
             handleRegion("");
@@ -10,7 +10,7 @@ const Dropdown = ({ handleRegion }) => {
     }
     return (
         <div>
-            <select onChange={handleSelect} name="Filter by Region">
+            <select value={value} onChange={handleSelect} name="Filter by Region">
                 <option>Filter by Region</option>
                 <option>Africa</option>
                 <option>Americas</option>

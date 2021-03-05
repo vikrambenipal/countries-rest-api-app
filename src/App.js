@@ -34,8 +34,8 @@ function App() {
           <Nav />
           <Switch>
             <Route exact path="/">
-              <Search handleSearch={handleSearch}/>
-              <Dropdown handleRegion={handleRegion}/>
+              <Search handleSearch={handleSearch} value={search}/>
+              <Dropdown handleRegion={handleRegion} value={region}/>
                 {countries.map((country, i) => {
                   return ((region === "" || region === country.region) && country.name.includes(search)) 
                   && 
