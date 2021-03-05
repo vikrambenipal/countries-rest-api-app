@@ -11,6 +11,10 @@ const CardContainer = styled.div`
         width: 100%;
     }
     cursor: pointer;
+    .link {
+        color: inherit;
+        text-decoration: none;
+    }
 `
 
 const Card = ({ name, population, region, capital, nativeName, subregion, 
@@ -18,7 +22,7 @@ const Card = ({ name, population, region, capital, nativeName, subregion,
     return (
         <div>
         <CardContainer>
-            <Link to={{
+            <Link className="link" to={{
             pathname: `/country/${name}`,
             state: {
                 name: name,

@@ -1,0 +1,19 @@
+[
+    {
+        "theme": "light",
+        "text-color": "black",
+        "icon-color": "black",
+        "button-color": "white",
+        "background-color": "#FAFAFA",
+        "box-color": "white"
+    },
+    {
+        "theme": "dark",
+        "text-color": "white",
+        "icon-color": "white",
+        "button-color": "#2B3844",
+        "background-color": "#202C36",
+        "box-color": "#2B3844"
+    }
+]
+
