@@ -7,7 +7,7 @@ const InputStyle = styled.select`
     height: 40px;
     box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.0532);
     margin-top: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border-radius: 5px;
     padding-left: 10px;
     padding-right: 10px;

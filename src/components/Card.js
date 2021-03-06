@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-    box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.0294);
+    box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.0494);
+    border-radius: 5px;
     margin: 0 auto;
     margin-bottom: 45px;
     width: 70%;
@@ -23,6 +24,8 @@ const CardContainer = styled.div`
     img {
         width: 100%;
         height: 180px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
     }
     cursor: pointer;
     .link {
