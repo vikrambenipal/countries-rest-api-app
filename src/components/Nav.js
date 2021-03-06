@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon } from '@fortawesome/free-solid-svg-icons'
 
 const NavContainer = styled.div`
-    border: 1px solid black;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.0562);
     display: flex;
     flex-direction: row;
     justify-content: space-between;

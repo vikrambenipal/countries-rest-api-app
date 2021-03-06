@@ -3,12 +3,26 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-    border: 1px solid black;
+    box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.0294);
     margin: 0 auto;
-    margin-bottom: 25px;
+    margin-bottom: 45px;
     width: 70%;
+    max-width: 350px;
+    height: 350px;
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+    h3, p {
+        padding-left: 20px;
+    }
+    p {
+        margin-top: -5px;
+    }
+    .info {
+        margin-top: 30px;
+    }
     img {
         width: 100%;
+        height: 180px;
     }
     cursor: pointer;
     .link {
@@ -40,9 +54,12 @@ const Card = ({ name, population, region, capital, nativeName, subregion,
             }}>
             <img src={flag} alt=""></img>
             <h3>{name}</h3>
-            <p>Population: {population}</p>
-            <p>Region: {region}</p>
-            <p>Capital: {capital}</p>
+            <div className="info">
+                <p><span>Population</span>: {population}</p>
+                <p><span>Region: </span>{region}</p>
+                <p><span>Capital: </span>{capital}</p>
+            </div>
+            
             </Link>
         </CardContainer>
             

@@ -6,6 +6,29 @@ import Card from './components/Card';
 import CardPage from './components/CardPage';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import styled from 'styled-components';
+
+const List = styled.div`
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+`
+const Filter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 15px;
+  @media all and (min-width: 1050px){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+` 
 
 function App() {
 
@@ -34,15 +57,18 @@ function App() {
           <Nav />
           <Switch>
             <Route exact path="/">
-              <Search handleSearch={handleSearch} value={search}/>
-              <Dropdown handleRegion={handleRegion} value={region}/>
+              <Filter>
+                <Search className="search" handleSearch={handleSearch} value={search}/>
+                <Dropdown className="drop" handleRegion={handleRegion} value={region}/>
+              </Filter>
+              <List>
                 {countries.map((country, i) => {
                   return ((region === "" || region === country.region) && country.name.includes(search)) 
-                  && 
-                    <Card key={i} name={country.name} population={country.population} region={country.region} capital={country.capital} 
+                  && <Card key={i} name={country.name} population={country.population} region={country.region} capital={country.capital} 
                     nativeName={country.nativeName} subregion={country.subregion} languages={country.languages} currencies={country.currencies} 
                     topLevelDomain={country.topLevelDomain} borders={country.borders} flag={country.flag}/>
                 })}
+              </List>
             </Route>
             <Route exact path='/country/:name' 
             render={(props) => <CardPage {...props}  />}/>
