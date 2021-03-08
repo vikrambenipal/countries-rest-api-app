@@ -74,8 +74,9 @@ const Container = styled.div`
     @media all and (min-width: 1100px){
         display: flex;
         flex-direction: row;
-        //justify-content: center;
+        justify-content: center;
         align-items: center;
+        margin: 0 auto;
         img {
             width: 40%;
             //height: 400px;
@@ -147,7 +148,7 @@ const CardPage = (props) => {
                         </Section2>
                     </Content>
                     
-                    <p><span className="border">Border Countries:</span></p>
+                    {borders.length > 0 &&<p><span className="border">Border Countries:</span></p>}
                     <Border>
                         {borders.map((bord, i) => {
                             if(i === borders.length - 1){
