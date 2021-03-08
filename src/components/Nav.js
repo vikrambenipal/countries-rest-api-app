@@ -15,6 +15,7 @@ const NavContainer = styled.div`
     p {
         margin-right: 20px;
     }
+    margin-bottom: 50px;
 `
 const DarkMode = styled.div`
     display: flex;
