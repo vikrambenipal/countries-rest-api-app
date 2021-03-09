@@ -9,7 +9,8 @@ const Button = styled(Link)`
 `
 const Flag = styled.img`
     width: 90%;
-    max-width: 700px;
+    border-radius: 5px;
+    max-width: 500px;
     display: flex;
     margin: 0 auto;
     margin-top: 50px;
@@ -68,6 +69,7 @@ const Content = styled.div`
     }
     @media all and (min-width: 1100px){
         margin-right: 20px;
+        margin-top: 0px;
     }
 `
 const Container = styled.div`
@@ -75,7 +77,7 @@ const Container = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: center;
-        align-items: center;
+        //align-items: center;
         margin: 0 auto;
         img {
             width: 40%;
@@ -104,9 +106,9 @@ const Header = styled.div`
         }
     }
     @media all and (min-width: 1100px){
-        margin-top: 150px;
+        //margin-top: 150px;
         h1 {
-            margin-top: 0px;
+            margin-top: 20px;
         }
     }
     
