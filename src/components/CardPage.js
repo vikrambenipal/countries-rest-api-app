@@ -1,11 +1,26 @@
 import React from 'react'
 import styled from'styled-components';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
-const Button = styled(Link)`
-    margin-left: 15px;
-    width: 200px;
-    border: 1px solid black;
+const ButtonContainer = styled(Link)`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    width: 130px;
+    height: 40px;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.2931);
+    text-decoration: none;
+    p {
+        text-decoration: none;
+        color: black;
+    }
+    .arrow {
+        margin-right: 10px;
+    }
 `
 const Flag = styled.img`
     width: 90%;
@@ -119,7 +134,11 @@ const CardPage = (props) => {
         languages, currencies, topLevelDomain, borders, flag } = props.location.state;
     return (
         <div>
-            <Button to="/">Back</Button>
+            
+            <ButtonContainer to="/">
+                <FontAwesomeIcon className="arrow" color="black" icon={faArrowLeft}></FontAwesomeIcon>
+                <p>Back</p>
+            </ButtonContainer>
             <Container>   
                 <Flag src={flag} alt=""></Flag>
                 <Header>
