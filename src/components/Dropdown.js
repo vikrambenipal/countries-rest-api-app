@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import ThemeContext from '../ThemeContext';
 
 const InputStyle = styled.select`
     margin; 0 auto;
@@ -12,14 +13,22 @@ const InputStyle = styled.select`
     padding-left: 10px;
     padding-right: 10px;
     width: 200px;
+    &.light {
+        background-color: white;
+        color: black;
+    }
+    &.dark {
+        background-color: #2B3844;
+        color: white;
+    }
     @media all and (min-width: 1050px){
         margin: 0px;
         margin-right: 60px;
     }
     
 `
-
 const Dropdown = ({ handleRegion, value }) => {
+    const lightTheme = useContext(ThemeContext);
     const handleSelect = (e) => {
         if(e.target.value === "Filter by Region"){
             handleRegion("");
@@ -29,7 +38,7 @@ const Dropdown = ({ handleRegion, value }) => {
     }
     return (
         <div>
-            <InputStyle value={value} onChange={handleSelect} name="Filter by Region">
+            <InputStyle className={lightTheme ? "light" : "dark"} value={value} onChange={handleSelect} name="Filter by Region">
                 <option>Filter by Region</option>
                 <option>Africa</option>
                 <option>Americas</option>

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import ThemeContext from '../ThemeContext';
 
 const CardContainer = styled.div`
     box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.0494);
@@ -32,13 +33,27 @@ const CardContainer = styled.div`
         color: inherit;
         text-decoration: none;
     }
+    &.light {
+        p, h3 {
+            color: black;
+        }
+        background-color: white;
+    }
+    &.dark {
+        p, h3 {
+            color: white;
+        }
+        background-color: #2B3844;
+    }
 `
 
 const Card = ({ name, population, region, capital, nativeName, subregion, 
     languages, currencies, topLevelDomain, borders, flag }) => {
+    
+    const lightTheme = useContext(ThemeContext);
     return (
         <div>
-        <CardContainer>
+        <CardContainer className={lightTheme ? "light" : "dark"}>
             <Link className="link" to={{
             pathname: `/country/${name}`,
             state: {

@@ -154,14 +154,13 @@ const CardPage = (props) => {
                         <Section2>
                             <p><span>Top Level Domain: </span>{topLevelDomain}</p>
                             <p><span>Currencies: </span>{currencies[0].name}</p>
-                            {console.log(JSON.stringify(languages))}
                             <Row>
                                 <p><span>Languages: </span></p>
                                 {languages.map((lang, i) => {
                                     if(i === languages.length - 1){
-                                        return <p>{lang.name}</p>
+                                        return <p key={i}>{lang.name}</p>
                                     }else{ 
-                                        return <p>{ " " + lang.name + ","}   </p>
+                                        return <p key={i}>{ " " + lang.name + ","}   </p>
                                     }
                                 })}
                             </Row>
@@ -173,9 +172,9 @@ const CardPage = (props) => {
                     <Border>
                         {borders.map((bord, i) => {
                             if(i === borders.length - 1){
-                                return <p>{bord}</p>
+                                return <p key={i}>{bord}</p>
                             }else{ 
-                                return <p>{bord} </p>
+                                return <p key={i}>{bord} </p>
                             }
                         })}
                     </Border>

@@ -5,7 +5,7 @@ import Search from './components/Search';
 import Card from './components/Card';
 import CardPage from './components/CardPage';
 import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import ThemeContext from './ThemeContext';
 import GlobalStyle from './GlobalStyle';
@@ -45,6 +45,10 @@ function App() {
         setCountries(countryData);
       })
   }, [])
+
+  useEffect(() => {
+    document.body.style.backgroundColor = lightTheme ? "white" : "#202C36";
+  }, [lightTheme])
 
   function toggleTheme(){
     setLightTheme(prevTheme => !prevTheme);
