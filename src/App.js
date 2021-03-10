@@ -8,6 +8,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import styled from 'styled-components';
 import ThemeContext from './ThemeContext';
+import GlobalStyle from './GlobalStyle';
 
 const List = styled.div`
   display: flex;
@@ -60,10 +61,10 @@ function App() {
 
   return (
     <Router>
+        <GlobalStyle />
+        <ThemeContext.Provider value={lightTheme}>
         <div className="App">
-          <ThemeContext.Provider value={lightTheme}>
-            <Nav toggleTheme={toggleTheme}/>
-          </ThemeContext.Provider>
+          <Nav toggleTheme={toggleTheme}/>
           <Switch>
             <Route exact path="/">
               <Filter>
@@ -83,6 +84,7 @@ function App() {
             render={(props) => <CardPage {...props}  />}/>
           </Switch>
         </div>
+        </ThemeContext.Provider>
     </Router>
     
   );

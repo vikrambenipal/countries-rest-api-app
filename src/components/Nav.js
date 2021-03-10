@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon } from '@fortawesome/free-solid-svg-icons'
@@ -10,19 +10,27 @@ const NavContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 50px;
     h3 {
         margin-left: 15px;
     }
     p {
         margin-right: 20px;
     }
-    .a {
-        color: red;
+    h3, p {
+        &.light {
+            color: black;
+        }
+        &.dark {
+            color: white;
+        }
     }
-    .b {
-        color: blue;
+    &.light {
+        background-color: white;
     }
-    margin-bottom: 50px;
+    &.dark {
+        background-color: #2B3844;
+    }
 `
 const DarkMode = styled.div`
     display: flex;
@@ -46,11 +54,11 @@ const Nav = ( { toggleTheme }) => {
 
     return (
         
-        <NavContainer >
-            <h3 className={lightTheme ? "a" : "b"}>Where in the world?</h3>
+        <NavContainer className={lightTheme ? "light" : "dark"}>
+            <h3 className={lightTheme ? "light" : "dark"}>Where in the world?</h3>
             <DarkMode>
                 <FontAwesomeIcon onClick={handleTheme} className="moon" icon={faMoon} color="white" stroke="black"/>
-                <p>Dark Mode</p>
+                <p className={lightTheme ? "light" : "dark"} onClick={handleTheme}>Dark Mode</p>
             </DarkMode>
         </NavContainer>
     )
