@@ -7,6 +7,7 @@ import CardPage from './components/CardPage';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import styled from 'styled-components';
+import ThemeContext from './ThemeContext';
 
 const List = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [region, setRegion] = useState("");
   const [search, setSearch] = useState("");
+  const [lightTheme, setLightTheme] = useState(true);
 
   useEffect(() => {
     axios.get("https://restcountries.eu/rest/v2/all").then(e => {
@@ -42,6 +44,11 @@ function App() {
         setCountries(countryData);
       })
   }, [])
+
+  function toggleTheme(){
+    setLightTheme(prevTheme => !prevTheme);
+    
+  }
 
   const handleRegion = (newRegion) => {
     setRegion(newRegion);
@@ -54,7 +61,9 @@ function App() {
   return (
     <Router>
         <div className="App">
-          <Nav />
+          <ThemeContext.Provider value={lightTheme}>
+            <Nav toggleTheme={toggleTheme}/>
+          </ThemeContext.Provider>
           <Switch>
             <Route exact path="/">
               <Filter>

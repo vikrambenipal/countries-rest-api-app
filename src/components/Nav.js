@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import ThemeContext from '../ThemeContext';
 
 const NavContainer = styled.div`
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.0562);
@@ -14,6 +15,12 @@ const NavContainer = styled.div`
     }
     p {
         margin-right: 20px;
+    }
+    .a {
+        color: red;
+    }
+    .b {
+        color: blue;
     }
     margin-bottom: 50px;
 `
@@ -29,12 +36,20 @@ const DarkMode = styled.div`
     }
 `
 
-const Nav = () => {
+const Nav = ( { toggleTheme }) => {
+    const lightTheme = useContext(ThemeContext);
+    console.log(lightTheme);
+
+    const handleTheme = (e) => {
+        toggleTheme();
+    }
+
     return (
-        <NavContainer>
-            <h3>Where in the world?</h3>
+        
+        <NavContainer >
+            <h3 className={lightTheme ? "a" : "b"}>Where in the world?</h3>
             <DarkMode>
-                <FontAwesomeIcon className="moon" icon={faMoon} color="white" stroke="black"/>
+                <FontAwesomeIcon onClick={handleTheme} className="moon" icon={faMoon} color="white" stroke="black"/>
                 <p>Dark Mode</p>
             </DarkMode>
         </NavContainer>
