@@ -79,6 +79,17 @@ const Border = styled.div`
         box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1049);
         padding: 5px 40px;
     }
+    &.light{
+        p{
+            background-color: white;
+        }
+    }
+    &.dark{
+        p{
+            background-color: #2B3844;
+        }
+    }
+
 `
 const Content = styled.div`
     margin-left: 30px;
@@ -190,7 +201,7 @@ const CardPage = (props) => {
                     </Content>
                     
                     {borders.length > 0 &&<p><span className="border">Border Countries:</span></p>}
-                    <Border>
+                    <Border className={lightTheme ? "light" : "dark"}>
                         {borders.map((bord, i) => {
                             if(i === borders.length - 1){
                                 return <p key={i}>{bord}</p>
