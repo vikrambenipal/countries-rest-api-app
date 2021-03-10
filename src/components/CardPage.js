@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from'styled-components';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import ThemeContext from '../ThemeContext';
 
 const ButtonContainer = styled(Link)`
     display: flex;
@@ -16,10 +17,19 @@ const ButtonContainer = styled(Link)`
     text-decoration: none;
     p {
         text-decoration: none;
-        color: black;
     }
     .arrow {
         margin-right: 10px;
+    }
+    &.light {
+        p {
+            color: black;
+        }
+    }
+    &.dark {
+        p {
+            color: white;
+        }
     }
 `
 const Flag = styled.img`
@@ -88,6 +98,16 @@ const Content = styled.div`
     }
 `
 const Container = styled.div`
+    &.light {
+        p, h1 {
+            color: black;
+        }
+    }
+    &.dark {
+        p, h1 {
+            color: white;
+        }
+    }
     @media all and (min-width: 1100px){
         display: flex;
         flex-direction: row;
@@ -132,14 +152,15 @@ const CardPage = (props) => {
 
     const { name, population, region, capital, nativeName, subregion, 
         languages, currencies, topLevelDomain, borders, flag } = props.location.state;
+
+    const lightTheme = useContext(ThemeContext);
     return (
         <div>
-            
-            <ButtonContainer to="/">
-                <FontAwesomeIcon className="arrow" color="black" icon={faArrowLeft}></FontAwesomeIcon>
+            <ButtonContainer className={lightTheme ? "light" : "dark"} to="/">
+                <FontAwesomeIcon className="arrow" color={lightTheme ? "black" : "white"} icon={faArrowLeft}></FontAwesomeIcon>
                 <p>Back</p>
             </ButtonContainer>
-            <Container>   
+            <Container className={lightTheme ? "light" : "dark"}>   
                 <Flag src={flag} alt=""></Flag>
                 <Header>
                 <h1>{name}</h1>
