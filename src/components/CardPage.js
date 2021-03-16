@@ -73,19 +73,23 @@ const Border = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
-    p {
+    .bders {
         margin-left: 25px;
         margin-right: 10px;
         box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1049);
         padding: 5px 40px;
+        text-decoration: none;
+        color: black;
+        margin-top: 20px;
     }
+    margin-bottom: 30px;
     &.light{
         p{
             background-color: white;
         }
     }
     &.dark{
-        p{
+        .bders{
             background-color: #2B3844;
         }
     }
@@ -94,7 +98,7 @@ const Border = styled.div`
 const Content = styled.div`
     margin-left: 30px;
     margin-top: 30px;
-    span, p {
+    span, p, .bders {
         font-size: 16px;
     }
     @media all and (min-width: 800px){
@@ -110,12 +114,12 @@ const Content = styled.div`
 `
 const Container = styled.div`
     &.light {
-        p, h1 {
+        p, h1, .bders {
             color: black;
         }
     }
     &.dark {
-        p, h1 {
+        p, h1, .bders {
             color: white;
         }
     }
@@ -200,13 +204,44 @@ const CardPage = (props) => {
                         </Section2>
                     </Content>
                     
+                    {console.log(borders.length)}
                     {borders.length > 0 &&<p><span className="border">Border Countries:</span></p>}
                     <Border className={lightTheme ? "light" : "dark"}>
                         {borders.map((bord, i) => {
                             if(i === borders.length - 1){
-                                return <p key={i}>{bord}</p>
+                                return <Link className="bders" key={i} to={{
+                                    pathname: `/country/${name}`,
+                                    state: {
+                                        name: borders[i].name,
+                                        population: borders[i].population,
+                                        region: borders[i].region,
+                                        capital: borders[i].capital, 
+                                        nativeName: borders[i].nativeName,
+                                        subregion: borders[i].subregion,
+                                        languages: borders[i].languages,
+                                        currencies: borders[i].currencies,
+                                        topLevelDomain: borders[i].topLevelDomain,
+                                        borders: borders[i].borders,
+                                        flag: borders[i].flag
+                                    }
+                                }}>{bord.name}</Link>
                             }else{ 
-                                return <p key={i}>{bord} </p>
+                                return <Link className="bders" key={i} to={{
+                                    pathname: `/country/${name}`,
+                                    state: {
+                                        name: borders[i].name,
+                                        population: borders[i].population,
+                                        region: borders[i].region,
+                                        capital: borders[i].capital, 
+                                        nativeName: borders[i].nativeName,
+                                        subregion: borders[i].subregion,
+                                        languages: borders[i].languages,
+                                        currencies: borders[i].currencies,
+                                        topLevelDomain: borders[i].topLevelDomain,
+                                        borders: borders[i].borders,
+                                        flag: borders[i].flag
+                                    }
+                                }}>{bord.name}</Link>
                             }
                         })}
                     </Border>

@@ -51,6 +51,7 @@ const Card = ({ name, population, region, capital, nativeName, subregion,
     languages, currencies, topLevelDomain, borders, flag }) => {
     
     const lightTheme = useContext(ThemeContext);
+    console.log(borders);
     return (
         <div>
         <CardContainer className={lightTheme ? "light" : "dark"}>
