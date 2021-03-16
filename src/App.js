@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import Nav from './components/Nav';
 import Dropdown from './components/Dropdown';
 import Search from './components/Search';
@@ -63,6 +63,20 @@ function App() {
     setSearch(text);
   }
 
+  const FindBorders = (b_list, countries) => {
+    b_list.sort();
+    let j = 0;
+    countries.map((country, i) => {
+      if(country.alpha3Code === b_list[j]){
+        b_list[j] = country.name;
+        j++;
+      }
+      return <Fragment></Fragment>
+    });
+    return b_list;
+  }
+  let b_list = [];
+
   return (
     <Router>
         <GlobalStyle />
@@ -77,10 +91,11 @@ function App() {
               </Filter>
               <List>
                 {countries.map((country, i) => {
-                  return ((region === "" || region === country.region) && country.name.includes(search)) 
+                  b_list = FindBorders(country.borders, countries);
+                  return ((region === "" || region === country.region) && country.name.toLowerCase().includes(search.toLocaleLowerCase())) 
                   && <Card key={i} name={country.name} population={country.population} region={country.region} capital={country.capital} 
                     nativeName={country.nativeName} subregion={country.subregion} languages={country.languages} currencies={country.currencies} 
-                    topLevelDomain={country.topLevelDomain} borders={country.borders} flag={country.flag}/>
+                    topLevelDomain={country.topLevelDomain} borders={b_list} flag={country.flag}/>
                 })}
               </List>
             </Route>
