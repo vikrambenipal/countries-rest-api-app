@@ -92,7 +92,6 @@ function App() {
               <List>
                 {countries.map((country, i) => {
                   b_list = FindBorders(country.borders, countries);
-                  //console.log(b_list);
                   return ((region === "" || region === country.region) && country.name.toLowerCase().includes(search.toLocaleLowerCase())) 
                   && <Card key={i} name={country.name} population={country.population} region={country.region} capital={country.capital} 
                     nativeName={country.nativeName} subregion={country.subregion} languages={country.languages} currencies={country.currencies} 

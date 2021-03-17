@@ -203,8 +203,6 @@ const CardPage = (props) => {
                             
                         </Section2>
                     </Content>
-                    
-                    {console.log(borders.length)}
                     {borders.length > 0 &&<p><span className="border">Border Countries:</span></p>}
                     <Border className={lightTheme ? "light" : "dark"}>
                         {borders.map((bord, i) => {
@@ -246,9 +244,7 @@ const CardPage = (props) => {
                         })}
                     </Border>
                 </Header>
-                
             </Container>
-            
         </div>
     )
 }
