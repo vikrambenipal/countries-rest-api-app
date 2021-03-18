@@ -166,9 +166,11 @@ const Header = styled.div`
 const CardPage = (props) => {
 
     const { name, population, region, capital, nativeName, subregion, 
-        languages, currencies, topLevelDomain, borders, flag } = props.location.state;
+        languages, currencies, topLevelDomain, b_list, flag } = props.location.state;
 
     const lightTheme = useContext(ThemeContext);
+    console.log(b_list);
+    console.log(b_list[0].b_list);
     return (
         <div>
             <ButtonContainer className={lightTheme ? "light" : "dark"} to="/">
@@ -189,7 +191,7 @@ const CardPage = (props) => {
                         </Section1>
                         <Section2>
                             <p><span>Top Level Domain: </span>{topLevelDomain}</p>
-                            <p><span>Currencies: </span>{currencies[0].name}</p>
+                            {currencies.length > 0 && <p><span>Currencies: </span>{currencies[0].name}</p>}
                             <Row>
                                 <p><span>Languages: </span></p>
                                 {languages.map((lang, i) => {
@@ -203,41 +205,41 @@ const CardPage = (props) => {
                             
                         </Section2>
                     </Content>
-                    {borders.length > 0 &&<p><span className="border">Border Countries:</span></p>}
+                    {b_list.length > 0 &&<p><span className="border">Border Countries:</span></p>}
                     <Border className={lightTheme ? "light" : "dark"}>
-                        {borders.map((bord, i) => {
-                            if(i === borders.length - 1){
+                        {b_list.map((bord, i) => {
+                            if(i === b_list.length - 1){
                                 return <Link className="bders" key={i} to={{
-                                    pathname: `/country/${name}`,
+                                    pathname: `/country/${b_list[i].name}`,
                                     state: {
-                                        name: borders[i].name,
-                                        population: borders[i].population,
-                                        region: borders[i].region,
-                                        capital: borders[i].capital, 
-                                        nativeName: borders[i].nativeName,
-                                        subregion: borders[i].subregion,
-                                        languages: borders[i].languages,
-                                        currencies: borders[i].currencies,
-                                        topLevelDomain: borders[i].topLevelDomain,
-                                        borders: borders[i].borders,
-                                        flag: borders[i].flag
+                                        name: b_list[i].name,
+                                        population: b_list[i].population,
+                                        region: b_list[i].region,
+                                        capital: b_list[i].capital, 
+                                        nativeName: b_list[i].nativeName,
+                                        subregion: b_list[i].subregion,
+                                        languages: b_list[i].languages,
+                                        currencies: b_list[i].currencies,
+                                        topLevelDomain: b_list[i].topLevelDomain,
+                                        b_list: b_list[i].b_list,
+                                        flag: b_list[i].flag
                                     }
                                 }}>{bord.name}</Link>
                             }else{ 
                                 return <Link className="bders" key={i} to={{
-                                    pathname: `/country/${name}`,
+                                    pathname: `/country/${b_list[i].name}`,
                                     state: {
-                                        name: borders[i].name,
-                                        population: borders[i].population,
-                                        region: borders[i].region,
-                                        capital: borders[i].capital, 
-                                        nativeName: borders[i].nativeName,
-                                        subregion: borders[i].subregion,
-                                        languages: borders[i].languages,
-                                        currencies: borders[i].currencies,
-                                        topLevelDomain: borders[i].topLevelDomain,
-                                        borders: borders[i].borders,
-                                        flag: borders[i].flag
+                                        name: b_list[i].name,
+                                        population: b_list[i].population,
+                                        region: b_list[i].region,
+                                        capital: b_list[i].capital, 
+                                        nativeName: b_list[i].nativeName,
+                                        subregion: b_list[i].subregion,
+                                        languages: b_list[i].languages,
+                                        currencies: b_list[i].currencies,
+                                        topLevelDomain: b_list[i].topLevelDomain,
+                                        b_list: b_list[i].b_list,
+                                        flag: b_list[i].flag
                                     }
                                 }}>{bord.name}</Link>
                             }

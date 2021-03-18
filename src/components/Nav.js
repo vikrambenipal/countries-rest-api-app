@@ -46,7 +46,6 @@ const DarkMode = styled.div`
 
 const Nav = ( { toggleTheme }) => {
     const lightTheme = useContext(ThemeContext);
-    console.log(lightTheme);
 
     const handleTheme = (e) => {
         toggleTheme();

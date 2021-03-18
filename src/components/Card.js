@@ -48,8 +48,7 @@ const CardContainer = styled.div`
 `
 
 const Card = ({ name, population, region, capital, nativeName, subregion, 
-    languages, currencies, topLevelDomain, borders, flag }) => {
-    
+    languages, currencies, topLevelDomain, b_list, flag }) => {
     const lightTheme = useContext(ThemeContext);
     return (
         <div>
@@ -66,7 +65,7 @@ const Card = ({ name, population, region, capital, nativeName, subregion,
                 languages: languages,
                 currencies: currencies,
                 topLevelDomain: topLevelDomain,
-                borders: borders,
+                b_list: b_list,
                 flag: flag
             }
             }}>
