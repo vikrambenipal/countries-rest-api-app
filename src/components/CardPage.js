@@ -169,8 +169,6 @@ const CardPage = (props) => {
         languages, currencies, topLevelDomain, b_list, flag } = props.location.state;
 
     const lightTheme = useContext(ThemeContext);
-    console.log(b_list);
-    console.log(b_list[0].b_list);
     return (
         <div>
             <ButtonContainer className={lightTheme ? "light" : "dark"} to="/">
